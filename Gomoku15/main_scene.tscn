@@ -1,6 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://bd7il1mdi2odp"]
+[gd_scene load_steps=4 format=3 uid="uid://bd7il1mdi2odp"]
 
 [ext_resource type="Script" path="res://scripts/TitleBar.gd" id="1_1clxt"]
+[ext_resource type="Script" path="res://scripts/Board.gd" id="2_7ojb1"]
+[ext_resource type="Script" path="res://scripts/Grid.gd" id="3_wqwvs"]
 
 [node name="MainScene" type="Node2D"]
 
@@ -31,3 +33,18 @@ offset_top = 19.0
 offset_right = 424.0
 offset_bottom = 45.0
 text = "ver 0.001"
+
+[node name="Board" type="ColorRect" parent="."]
+offset_left = 25.0
+offset_top = 238.0
+offset_right = 490.0
+offset_bottom = 703.0
+color = Color(0.87451, 0.764706, 0.376471, 1)
+script = ExtResource("2_7ojb1")
+
+[node name="Grid" type="ColorRect" parent="Board"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+color = Color(1, 1, 1, 0)
+script = ExtResource("3_wqwvs")
