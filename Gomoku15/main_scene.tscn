@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://bd7il1mdi2odp"]
+[gd_scene load_steps=13 format=3 uid="uid://bd7il1mdi2odp"]
 
 [ext_resource type="Script" path="res://scripts/TitleBar.gd" id="1_1clxt"]
 [ext_resource type="Script" path="res://scripts/main_scene.gd" id="1_g3bxf"]
@@ -6,6 +6,9 @@
 [ext_resource type="Script" path="res://scripts/Grid.gd" id="3_wqwvs"]
 [ext_resource type="Texture2D" uid="uid://odir3pu3o3vw" path="res://images/black_31.png" id="4_x3uc8"]
 [ext_resource type="Texture2D" uid="uid://ccn0u3svlt0m6" path="res://images/white_31.png" id="5_0fuu7"]
+[ext_resource type="Texture2D" uid="uid://bmkivh14ecwf1" path="res://images/autorenew_white_32.png" id="7_5hxt1"]
+[ext_resource type="Texture2D" uid="uid://buv5opysoy8ff" path="res://images/play_arrow_white_32.png" id="8_ohweq"]
+[ext_resource type="Texture2D" uid="uid://bt67q3bcmc8ab" path="res://images/stop_white_32.png" id="9_l4qj8"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_m1i2o"]
 texture = ExtResource("4_x3uc8")
@@ -72,3 +75,34 @@ script = ExtResource("3_wqwvs")
 tile_set = SubResource("TileSet_u5f6f")
 format = 2
 layer_0/tile_data = PackedInt32Array(0, 1, 0, 917518, 1, 0, 131073, 1, 0, 1, 0, 0, 851981, 0, 0, 917504, 0, 0, 14, 0, 0)
+
+[node name="InitButton" type="Button" parent="."]
+offset_left = 10.0
+offset_top = 66.0
+offset_right = 160.0
+offset_bottom = 106.0
+text = "Init Board"
+icon = ExtResource("7_5hxt1")
+
+[node name="StartStopButton" type="Button" parent="."]
+offset_left = 185.0
+offset_top = 66.0
+offset_right = 335.0
+offset_bottom = 106.0
+text = "Start Game"
+icon = ExtResource("8_ohweq")
+
+[node name="PlayTexture" type="TextureRect" parent="StartStopButton"]
+layout_mode = 0
+offset_left = -284.0
+offset_right = -244.0
+offset_bottom = 40.0
+texture = ExtResource("8_ohweq")
+
+[node name="StopTexture" type="TextureRect" parent="StartStopButton"]
+layout_mode = 0
+offset_left = -284.0
+offset_top = 61.0
+offset_right = -244.0
+offset_bottom = 101.0
+texture = ExtResource("9_l4qj8")
