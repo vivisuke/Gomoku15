@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://bd7il1mdi2odp"]
+[gd_scene load_steps=35 format=3 uid="uid://bd7il1mdi2odp"]
 
 [ext_resource type="Script" path="res://scripts/TitleBar.gd" id="1_1clxt"]
 [ext_resource type="Script" path="res://scripts/main_scene.gd" id="1_g3bxf"]
@@ -16,6 +16,7 @@
 [ext_resource type="Texture2D" uid="uid://dk64tuxwhkcyo" path="res://images/undo_white.png" id="14_r1sny"]
 [ext_resource type="Texture2D" uid="uid://hl2kdbh54uj0" path="res://images/undo_gray.png" id="15_ydeam"]
 [ext_resource type="Texture2D" uid="uid://b4bxgbdht6gxe" path="res://images/skip_previous_black.png" id="16_efbkl"]
+[ext_resource type="Texture2D" uid="uid://bkd5kj0qv03wg" path="res://images/empty24.png" id="16_etdwx"]
 [ext_resource type="Texture2D" uid="uid://m2tq2vk2bpbf" path="res://images/skip_previous_white.png" id="17_86x83"]
 [ext_resource type="Texture2D" uid="uid://btw4i1qgicrf4" path="res://images/skip_previous_gray.png" id="18_mw737"]
 [ext_resource type="Texture2D" uid="uid://dofaqkeomdoj7" path="res://images/back_arrow_black.png" id="19_r6sox"]
@@ -65,15 +66,15 @@ layout_mode = 0
 offset_right = 500.0
 offset_bottom = 50.0
 theme_override_font_sizes/font_size = 32
-text = "Gomoku XV"
+text = "Gomoku"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Version" type="Label" parent="TitleBar"]
 layout_mode = 0
-offset_left = 354.0
+offset_left = 328.0
 offset_top = 19.0
-offset_right = 424.0
+offset_right = 398.0
 offset_bottom = 45.0
 text = "ver 0.001"
 
@@ -261,6 +262,10 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "undo"
 horizontal_alignment = 1
 
+[node name="Space1" type="TextureRect" parent="HBC"]
+layout_mode = 2
+texture = ExtResource("16_etdwx")
+
 [node name="FirstButton" type="TextureButton" parent="HBC"]
 layout_mode = 2
 texture_normal = ExtResource("16_efbkl")
@@ -275,6 +280,10 @@ offset_bottom = 74.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "first"
 horizontal_alignment = 1
+
+[node name="Space2" type="TextureRect" parent="HBC"]
+layout_mode = 2
+texture = ExtResource("16_etdwx")
 
 [node name="BackButton" type="TextureButton" parent="HBC"]
 layout_mode = 2
@@ -291,6 +300,10 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "back"
 horizontal_alignment = 1
 
+[node name="Space3" type="TextureRect" parent="HBC"]
+layout_mode = 2
+texture = ExtResource("16_etdwx")
+
 [node name="ForwardButton" type="TextureButton" parent="HBC"]
 layout_mode = 2
 texture_normal = ExtResource("22_4lhjt")
@@ -306,6 +319,10 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "fwd"
 horizontal_alignment = 1
 
+[node name="Space4" type="TextureRect" parent="HBC"]
+layout_mode = 2
+texture = ExtResource("16_etdwx")
+
 [node name="LastButton" type="TextureButton" parent="HBC"]
 layout_mode = 2
 texture_normal = ExtResource("25_nrqby")
@@ -320,6 +337,10 @@ offset_bottom = 74.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "last"
 horizontal_alignment = 1
+
+[node name="Space5" type="TextureRect" parent="HBC"]
+layout_mode = 2
+texture = ExtResource("16_etdwx")
 
 [node name="RuleButton" type="TextureButton" parent="HBC"]
 layout_mode = 2
