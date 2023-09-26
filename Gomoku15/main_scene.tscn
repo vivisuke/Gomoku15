@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://bd7il1mdi2odp"]
+[gd_scene load_steps=19 format=3 uid="uid://bd7il1mdi2odp"]
 
 [ext_resource type="Script" path="res://scripts/TitleBar.gd" id="1_1clxt"]
 [ext_resource type="Script" path="res://scripts/main_scene.gd" id="1_g3bxf"]
@@ -12,6 +12,9 @@
 [ext_resource type="Texture2D" uid="uid://c2suld26k1ali" path="res://images/black_42.png" id="10_8sw0x"]
 [ext_resource type="Texture2D" uid="uid://27onerr514r4" path="res://images/white_42.png" id="11_28udq"]
 [ext_resource type="Texture2D" uid="uid://df7v8jmbgwoqv" path="res://images/return_white_32.png" id="12_6xplx"]
+[ext_resource type="Texture2D" uid="uid://cr8wmdaub82ad" path="res://images/undo_black.png" id="13_itqvw"]
+[ext_resource type="Texture2D" uid="uid://dk64tuxwhkcyo" path="res://images/undo_white.png" id="14_r1sny"]
+[ext_resource type="Texture2D" uid="uid://hl2kdbh54uj0" path="res://images/undo_gray.png" id="15_ydeam"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_m1i2o"]
 texture = ExtResource("4_x3uc8")
@@ -205,14 +208,6 @@ offset_bottom = 758.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "# empty: 225"
 
-[node name="PlaceButton" type="Button" parent="."]
-offset_left = 342.0
-offset_top = 732.0
-offset_right = 492.0
-offset_bottom = 772.0
-text = "Place Stone"
-icon = ExtResource("12_6xplx")
-
 [node name="ConfirmButton" type="CheckButton" parent="."]
 offset_left = 230.0
 offset_top = 732.0
@@ -221,3 +216,32 @@ offset_bottom = 772.0
 theme_override_colors/font_color = Color(0.501961, 0.501961, 0.501961, 1)
 theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
 text = "Confirm"
+
+[node name="PlaceButton" type="Button" parent="."]
+offset_left = 342.0
+offset_top = 732.0
+offset_right = 492.0
+offset_bottom = 772.0
+text = "Place Stone"
+icon = ExtResource("12_6xplx")
+
+[node name="HBC" type="HBoxContainer" parent="."]
+offset_top = 790.0
+offset_right = 500.0
+offset_bottom = 830.0
+alignment = 1
+
+[node name="UndoButton" type="TextureButton" parent="HBC"]
+layout_mode = 2
+texture_normal = ExtResource("13_itqvw")
+texture_pressed = ExtResource("14_r1sny")
+texture_disabled = ExtResource("15_ydeam")
+
+[node name="Label" type="Label" parent="HBC/UndoButton"]
+layout_mode = 0
+offset_top = 48.0
+offset_right = 48.0
+offset_bottom = 74.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "undo"
+horizontal_alignment = 1
