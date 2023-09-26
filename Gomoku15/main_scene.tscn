@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://bd7il1mdi2odp"]
+[gd_scene load_steps=16 format=3 uid="uid://bd7il1mdi2odp"]
 
 [ext_resource type="Script" path="res://scripts/TitleBar.gd" id="1_1clxt"]
 [ext_resource type="Script" path="res://scripts/main_scene.gd" id="1_g3bxf"]
@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://bt67q3bcmc8ab" path="res://images/stop_white_32.png" id="9_l4qj8"]
 [ext_resource type="Texture2D" uid="uid://c2suld26k1ali" path="res://images/black_42.png" id="10_8sw0x"]
 [ext_resource type="Texture2D" uid="uid://27onerr514r4" path="res://images/white_42.png" id="11_28udq"]
+[ext_resource type="Texture2D" uid="uid://df7v8jmbgwoqv" path="res://images/return_white_32.png" id="12_6xplx"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_m1i2o"]
 texture = ExtResource("4_x3uc8")
@@ -203,3 +204,20 @@ offset_right = 130.0
 offset_bottom = 758.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "# empty: 225"
+
+[node name="PlaceButton" type="Button" parent="."]
+offset_left = 342.0
+offset_top = 732.0
+offset_right = 492.0
+offset_bottom = 772.0
+text = "Place Stone"
+icon = ExtResource("12_6xplx")
+
+[node name="ConfirmButton" type="CheckButton" parent="."]
+offset_left = 230.0
+offset_top = 732.0
+offset_right = 341.0
+offset_bottom = 772.0
+theme_override_colors/font_color = Color(0.501961, 0.501961, 0.501961, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+text = "Confirm"
