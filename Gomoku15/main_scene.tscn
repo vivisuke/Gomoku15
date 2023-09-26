@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://bd7il1mdi2odp"]
+[gd_scene load_steps=34 format=3 uid="uid://bd7il1mdi2odp"]
 
 [ext_resource type="Script" path="res://scripts/TitleBar.gd" id="1_1clxt"]
 [ext_resource type="Script" path="res://scripts/main_scene.gd" id="1_g3bxf"]
@@ -27,6 +27,9 @@
 [ext_resource type="Texture2D" uid="uid://bwiko8uoxvi10" path="res://images/skip_next_black.png" id="25_nrqby"]
 [ext_resource type="Texture2D" uid="uid://1blb4mf5fkkn" path="res://images/skip_next_white.png" id="26_55d81"]
 [ext_resource type="Texture2D" uid="uid://b8dlsb0rboj4v" path="res://images/skip_next_gray.png" id="27_ps3pm"]
+[ext_resource type="Texture2D" uid="uid://cr7rul86x0yb0" path="res://images/rule_black.png" id="28_us5ki"]
+[ext_resource type="Texture2D" uid="uid://dgaudu65i1khv" path="res://images/rule_white.png" id="29_ka3de"]
+[ext_resource type="Texture2D" uid="uid://cdjwxxdnle2wc" path="res://images/rule_gray.png" id="30_naweb"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_m1i2o"]
 texture = ExtResource("4_x3uc8")
@@ -316,4 +319,20 @@ offset_right = 48.0
 offset_bottom = 74.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "last"
+horizontal_alignment = 1
+
+[node name="RuleButton" type="TextureButton" parent="HBC"]
+layout_mode = 2
+disabled = true
+texture_normal = ExtResource("28_us5ki")
+texture_pressed = ExtResource("29_ka3de")
+texture_disabled = ExtResource("30_naweb")
+
+[node name="Label" type="Label" parent="HBC/RuleButton"]
+layout_mode = 0
+offset_top = 48.0
+offset_right = 48.0
+offset_bottom = 74.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "rule"
 horizontal_alignment = 1
