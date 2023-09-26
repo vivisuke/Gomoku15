@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://bd7il1mdi2odp"]
+[gd_scene load_steps=31 format=3 uid="uid://bd7il1mdi2odp"]
 
 [ext_resource type="Script" path="res://scripts/TitleBar.gd" id="1_1clxt"]
 [ext_resource type="Script" path="res://scripts/main_scene.gd" id="1_g3bxf"]
@@ -15,6 +15,18 @@
 [ext_resource type="Texture2D" uid="uid://cr8wmdaub82ad" path="res://images/undo_black.png" id="13_itqvw"]
 [ext_resource type="Texture2D" uid="uid://dk64tuxwhkcyo" path="res://images/undo_white.png" id="14_r1sny"]
 [ext_resource type="Texture2D" uid="uid://hl2kdbh54uj0" path="res://images/undo_gray.png" id="15_ydeam"]
+[ext_resource type="Texture2D" uid="uid://b4bxgbdht6gxe" path="res://images/skip_previous_black.png" id="16_efbkl"]
+[ext_resource type="Texture2D" uid="uid://m2tq2vk2bpbf" path="res://images/skip_previous_white.png" id="17_86x83"]
+[ext_resource type="Texture2D" uid="uid://btw4i1qgicrf4" path="res://images/skip_previous_gray.png" id="18_mw737"]
+[ext_resource type="Texture2D" uid="uid://dofaqkeomdoj7" path="res://images/back_arrow_black.png" id="19_r6sox"]
+[ext_resource type="Texture2D" uid="uid://7a0madsbs3lm" path="res://images/back_arrow_white.png" id="20_xqup5"]
+[ext_resource type="Texture2D" uid="uid://b3qdf6ig1v2k" path="res://images/back_arrow_gray.png" id="21_nl5m7"]
+[ext_resource type="Texture2D" uid="uid://cxyoe78etfhmu" path="res://images/play_arrow_black.png" id="22_4lhjt"]
+[ext_resource type="Texture2D" uid="uid://b8rl8tpeocr7a" path="res://images/play_arrow_white.png" id="23_5fyug"]
+[ext_resource type="Texture2D" uid="uid://bku51cmur5866" path="res://images/play_arrow_gray.png" id="24_5o11a"]
+[ext_resource type="Texture2D" uid="uid://bwiko8uoxvi10" path="res://images/skip_next_black.png" id="25_nrqby"]
+[ext_resource type="Texture2D" uid="uid://1blb4mf5fkkn" path="res://images/skip_next_white.png" id="26_55d81"]
+[ext_resource type="Texture2D" uid="uid://b8dlsb0rboj4v" path="res://images/skip_next_gray.png" id="27_ps3pm"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_m1i2o"]
 texture = ExtResource("4_x3uc8")
@@ -244,4 +256,64 @@ offset_right = 48.0
 offset_bottom = 74.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "undo"
+horizontal_alignment = 1
+
+[node name="FirstButton" type="TextureButton" parent="HBC"]
+layout_mode = 2
+texture_normal = ExtResource("16_efbkl")
+texture_pressed = ExtResource("17_86x83")
+texture_disabled = ExtResource("18_mw737")
+
+[node name="Label" type="Label" parent="HBC/FirstButton"]
+layout_mode = 0
+offset_top = 48.0
+offset_right = 48.0
+offset_bottom = 74.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "first"
+horizontal_alignment = 1
+
+[node name="BackButton" type="TextureButton" parent="HBC"]
+layout_mode = 2
+texture_normal = ExtResource("19_r6sox")
+texture_pressed = ExtResource("20_xqup5")
+texture_disabled = ExtResource("21_nl5m7")
+
+[node name="Label" type="Label" parent="HBC/BackButton"]
+layout_mode = 0
+offset_top = 48.0
+offset_right = 48.0
+offset_bottom = 74.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "back"
+horizontal_alignment = 1
+
+[node name="ForwardButton" type="TextureButton" parent="HBC"]
+layout_mode = 2
+texture_normal = ExtResource("22_4lhjt")
+texture_pressed = ExtResource("23_5fyug")
+texture_disabled = ExtResource("24_5o11a")
+
+[node name="Label" type="Label" parent="HBC/ForwardButton"]
+layout_mode = 0
+offset_top = 48.0
+offset_right = 48.0
+offset_bottom = 74.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "fwd"
+horizontal_alignment = 1
+
+[node name="LastButton" type="TextureButton" parent="HBC"]
+layout_mode = 2
+texture_normal = ExtResource("25_nrqby")
+texture_pressed = ExtResource("26_55d81")
+texture_disabled = ExtResource("27_ps3pm")
+
+[node name="Label" type="Label" parent="HBC/LastButton"]
+layout_mode = 0
+offset_top = 48.0
+offset_right = 48.0
+offset_bottom = 74.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "last"
 horizontal_alignment = 1
