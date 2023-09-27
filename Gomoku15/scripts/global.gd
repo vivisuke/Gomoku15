@@ -250,7 +250,7 @@ class Board:
 	#   └────────┘  
 	#   ↓y
 	func xyToUrIxMask(x, y) -> Array:	# return [ix, mask, nbit]
-		var ix = x + y - 10 + CDX
+		var ix = x + y - (N_HORZ-1) + CDX
 		if ix < 0 || ix >= N_DIAGONAL: return [-1, 0]
 		if ix <= CDX:
 			return [ix, 1<<(g.N_HORZ-1-x+(ix-CDX)), 5+ix]
@@ -994,15 +994,15 @@ class Board:
 		assert(xyToDrIxMask(1, 0) == [CDX+1, 1<<(N_HORZ-2), N_HORZ-1])
 		assert(xyToDrIxMask(N_HORZ-1, N_VERT-2) == [CDX+1, 0b1, N_HORZ-1])
 		#
-		assert(xyToUrIxMask(N_HORZ-1, 0) == [6, 0b1, 11])
-		assert(xyToUrIxMask(0, N_HORZ-1) == [6, 1<<(N_HORZ-1), N_HORZ])
-		assert(xyToUrIxMask(N_HORZ-2, 0) == [5, 0b1, N_HORZ-1])
-		assert(xyToUrIxMask(0, N_HORZ-2) == [5, 1<<(N_HORZ-2), N_HORZ-1])
-		assert(xyToUrIxMask(N_HORZ-3, 0) == [4, 0b1, N_HORZ-2])
-		assert(xyToUrIxMask(0, N_HORZ-3) == [4, 1<<(N_HORZ-3), N_HORZ-2])
-		assert(xyToUrIxMask(N_HORZ-1, 1) == [7, 0b1, N_HORZ-1])
-		assert(xyToUrIxMask(1, N_HORZ-1) == [7, 1<<(N_HORZ-2), N_HORZ-1])
-		assert(xyToUrIxMask(N_HORZ-1, 2) == [8, 0b1, N_HORZ-2])
+		assert(xyToUrIxMask(N_HORZ-1, 0) == [CDX, 0b1, N_HORZ])
+		assert(xyToUrIxMask(0, N_HORZ-1) == [CDX, 1<<(N_HORZ-1), N_HORZ])
+		assert(xyToUrIxMask(N_HORZ-2, 0) == [CDX-1, 0b1, N_HORZ-1])
+		assert(xyToUrIxMask(0, N_HORZ-2) == [CDX-1, 1<<(N_HORZ-2), N_HORZ-1])
+		assert(xyToUrIxMask(N_HORZ-3, 0) == [CDX-2, 0b1, N_HORZ-2])
+		assert(xyToUrIxMask(0, N_HORZ-3) == [CDX-2, 1<<(N_HORZ-3), N_HORZ-2])
+		assert(xyToUrIxMask(N_HORZ-1, 1) == [CDX+1, 0b1, N_HORZ-1])
+		assert(xyToUrIxMask(1, N_HORZ-1) == [CDX+1, 1<<(N_HORZ-2), N_HORZ-1])
+		assert(xyToUrIxMask(N_HORZ-1, 2) == [CDX+2, 0b1, N_HORZ-2])
 		#
 		var rv = eval_bitmap_34(0b0011100, 0, 7)
 		assert( rv[IX_B3] == 1 )
