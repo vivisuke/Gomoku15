@@ -10,7 +10,7 @@ const N_HORZ = 15
 const N_VERT = 15
 const CX = (N_HORZ - 1) / 2			# 7 for 15x15
 const CY = (N_VERT - 1) / 2
-const N_DIAGONAL = 10 + 1 + 10		# 斜め方向ビットマップ配列数
+const N_DIAGONAL = (N_HORZ-4)*2 + 1		# 斜め方向ビットマップ配列数
 const CDX = (N_DIAGONAL-1) / 2
 
 const ALPHA = -99999
@@ -643,13 +643,13 @@ class Board:
 		var d = xyToDrIxMask(x, y)
 		var u = xyToUrIxMask(x, y)
 		if col == BLACK:
-			if is_four_sub(1<<(10-x), h_black[y], h_white[y]): return true
-			if is_four_sub(1<<(10-y), v_black[x], v_white[x]): return true
+			if is_four_sub(1<<(N_HORZ-1-x), h_black[y], h_white[y]): return true
+			if is_four_sub(1<<(N_HORZ-1-y), v_black[x], v_white[x]): return true
 			if d[0] >= 0 && is_four_sub(d[1], d_black[d[0]], d_white[d[0]]): return true
 			if u[0] >= 0 && is_four_sub(u[1], u_black[u[0]], u_white[u[0]]): return true
 		elif col == WHITE:
-			if is_four_sub(1<<(10-x), h_white[y], h_black[y]): return true
-			if is_four_sub(1<<(10-y), v_white[x], v_black[x]): return true
+			if is_four_sub(1<<(N_HORZ-1-x), h_white[y], h_black[y]): return true
+			if is_four_sub(1<<(N_HORZ-1-y), v_white[x], v_black[x]): return true
 			if d[0] >= 0 && is_four_sub(d[1], d_white[d[0]], d_black[d[0]]): return true
 			if u[0] >= 0 && is_four_sub(u[1], u_white[u[0]], u_black[u[0]]): return true
 		return false
@@ -680,13 +680,13 @@ class Board:
 		var d = xyToDrIxMask(x, y)
 		var u = xyToUrIxMask(x, y)
 		if col == BLACK:
-			if is_three_sub(1<<(10-x), h_black[y], h_white[y], N_HORZ): return true
-			if is_three_sub(1<<(10-y), v_black[x], v_white[x], N_VERT): return true
+			if is_three_sub(1<<(N_HORZ-1-x), h_black[y], h_white[y], N_HORZ): return true
+			if is_three_sub(1<<(N_HORZ-1-y), v_black[x], v_white[x], N_VERT): return true
 			if d[0] >= 0 && is_three_sub(d[1], d_black[d[0]], d_white[d[0]], d[2]): return true
 			if u[0] >= 0 && is_three_sub(u[1], u_black[u[0]], u_white[u[0]], u[2]): return true
 		elif col == WHITE:
-			if is_three_sub(1<<(10-x), h_white[y], h_black[y], N_HORZ): return true
-			if is_three_sub(1<<(10-y), v_white[x], v_black[x], N_VERT): return true
+			if is_three_sub(1<<(N_HORZ-1-x), h_white[y], h_black[y], N_HORZ): return true
+			if is_three_sub(1<<(N_HORZ-1-y), v_white[x], v_black[x], N_VERT): return true
 			if d[0] >= 0 && is_three_sub(d[1], d_white[d[0]], d_black[d[0]], d[2]): return true
 			if u[0] >= 0 && is_three_sub(u[1], u_white[u[0]], u_black[u[0]], u[2]): return true
 		return false
@@ -699,13 +699,13 @@ class Board:
 		var v = 1 << (N_HORZ - 1 - y)
 		var d = xyToDrIxMask(x, y)
 		var u = xyToUrIxMask(x, y)
-		if is_four_sub(1<<(10-x), h_black[y], h_white[y]):
+		if is_four_sub(1<<(N_HORZ-1-x), h_black[y], h_white[y]):
 			n4 += 1
-		elif is_three_sub(1<<(10-x), h_black[y], h_white[y], N_HORZ):
+		elif is_three_sub(1<<(N_HORZ-1-x), h_black[y], h_white[y], N_HORZ):
 			n3 += 1
-		if is_four_sub(1<<(10-y), v_black[x], v_white[x]):
+		if is_four_sub(1<<(N_HORZ-1-y), v_black[x], v_white[x]):
 			n4 += 1
-		elif is_three_sub(1<<(10-y), v_black[x], v_white[x], N_VERT):
+		elif is_three_sub(1<<(N_HORZ-1-y), v_black[x], v_white[x], N_VERT):
 			n3 += 1
 		if d[0] >= 0 && is_four_sub(d[1], d_black[d[0]], d_white[d[0]]):
 			n4 += 1
@@ -940,7 +940,7 @@ class Board:
 	func print():
 		for y in range(N_VERT):
 			var txt = ""
-			var mask = 1 << 10
+			var mask = 1 << (N_HORZ-1)
 			for i in range(N_HORZ):
 				if (h_black[y] & mask) != 0: txt += " X"
 				elif (h_white[y] & mask) != 0: txt += " O"
@@ -951,7 +951,7 @@ class Board:
 	func print_eval(next_color):
 		for y in range(N_VERT):
 			var txt = ""
-			var mask = 1 << 10
+			var mask = 1 << (N_HORZ-1)
 			for x in range(N_HORZ):
 				if (h_black[y] & mask) != 0: txt += "   X"
 				elif (h_white[y] & mask) != 0: txt += "   O"
@@ -965,7 +965,7 @@ class Board:
 	func print_eval_ndiff(next_color):
 		for y in range(N_VERT):
 			var txt = ""
-			var mask = 1 << 10
+			var mask = 1 << (N_HORZ-1)
 			for x in range(N_HORZ):
 				if (h_black[y] & mask) != 0: txt += "    X"
 				elif (h_white[y] & mask) != 0: txt += "    O"
