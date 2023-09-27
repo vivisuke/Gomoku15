@@ -1,5 +1,6 @@
 extends Node2D
 
+var N_HORZ = g.N_HORZ
 var bd
 
 # Called when the node enters the scene tree for the first time.
@@ -87,14 +88,14 @@ func unit_test():
 	assert( b2.is_four(2, 2, g.BLACK) )		# （連続）四の場合
 	assert( b2.is_four(3, 3, g.BLACK) )		# （連続）四の場合
 	assert( b2.is_four(4, 4, g.BLACK) )		# （連続）四の場合
-	b2.put_color(1, 7, g.BLACK)				# ｜・●●●●｜
-	b2.put_color(2, 8, g.BLACK)
-	b2.put_color(3, 9, g.BLACK)
-	b2.put_color(4, 10, g.BLACK)
-	assert( b2.is_four(1, 7, g.BLACK) )		# （連続）四の場合
-	assert( b2.is_four(2, 8, g.BLACK) )		# （連続）四の場合
-	assert( b2.is_four(3, 9, g.BLACK) )		# （連続）四の場合
-	assert( b2.is_four(4, 10, g.BLACK) )		# （連続）四の場合
+	b2.put_color(1, (N_HORZ-4), g.BLACK)				# ｜・●●●●｜
+	b2.put_color(2, (N_HORZ-3), g.BLACK)
+	b2.put_color(3, (N_HORZ-2), g.BLACK)
+	b2.put_color(4, (N_HORZ-1), g.BLACK)
+	assert( b2.is_four(1, (N_HORZ-4), g.BLACK) )		# （連続）四の場合
+	assert( b2.is_four(2, (N_HORZ-3), g.BLACK) )		# （連続）四の場合
+	assert( b2.is_four(3, (N_HORZ-2), g.BLACK) )		# （連続）四の場合
+	assert( b2.is_four(4, (N_HORZ-1), g.BLACK) )		# （連続）四の場合
 	b2.put_color(0, 6, g.WHITE)					# ｜◯●●●●｜
 	assert( !b2.is_four(1, 7, g.BLACK) )		# 四が止められているの場合
 	assert( !b2.is_four(2, 8, g.BLACK) )		# 四が止められているの場合
