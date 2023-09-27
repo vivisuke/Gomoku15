@@ -1,6 +1,8 @@
 extends Node2D
 
 var N_HORZ = g.N_HORZ
+var N_DIAGONAL = (N_HORZ - 4) * 2 - 1		# 斜め方向ビットマップ配列数
+var CDX = (N_DIAGONAL - 1) / 2				# may be 11
 var bd
 
 # Called when the node enters the scene tree for the first time.
@@ -155,7 +157,7 @@ func unit_test():
 	b2.calc_eval_diff(g.BLACK)
 	assert(b2.eval == 0)
 	b2.put_color(0, 0, g.BLACK)
-	assert(b2.d_black[6] == 0b10000000000)
+	assert(b2.d_black[CDX] == 1<<(N_HORZ-1))
 	b2.calc_eval_diff(g.WHITE)
 	print(b2.eval)
 	assert(b2.eval == 3)
