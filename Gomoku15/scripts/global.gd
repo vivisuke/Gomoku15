@@ -11,6 +11,7 @@ const N_VERT = 15
 const CX = (N_HORZ - 1) / 2			# 7 for 15x15
 const CY = (N_VERT - 1) / 2
 const N_DIAGONAL = 10 + 1 + 10		# 斜め方向ビットマップ配列数
+const CDX = (N_DIAGONAL-1) / 2
 
 const ALPHA = -99999
 const BETA = 99999
@@ -67,7 +68,7 @@ class Board:
 	const IX_W42 = 6		# 両端空四個数インデックス
 	#var nput
 	var N_DIAGONAL = N_HORZ*2 - 4*2 - 1		# 斜め方向ビットマップ配列数
-	var DIAGONAL_CENTER_IX = (N_DIAGONAL - 1) / 2
+	var CDX = (N_DIAGONAL - 1) / 2
 	var verbose = false
 	var n_space				# 空欄数
 	var n_calc_eval = 0		# 評価ノード数
@@ -229,12 +230,12 @@ class Board:
 	#   └────────┘  
 	#   ↓y
 	func xyToDrIxMask(x, y) -> Array:	# return [ix, mask, nbit]
-		var ix = x - y + DIAGONAL_CENTER_IX
+		var ix = x - y + CDX
 		if ix < 0 || ix >= N_DIAGONAL: return [-1, 0]
-		if ix <= DIAGONAL_CENTER_IX:
-			return [ix, 1<<(g.N_HORZ-1-x+(ix-DIAGONAL_CENTER_IX)), DIAGONAL_CENTER_IX-1+ix]
+		if ix <= CDX:
+			return [ix, 1<<(g.N_HORZ-1-x+(ix-CDX)), 5+ix]
 		else:
-			return [ix, 1<<(g.N_HORZ-1-y-(ix-DIAGONAL_CENTER_IX)), 17-ix]
+			return [ix, 1<<(g.N_HORZ-1-y-(ix-CDX)), N_DIAGONAL+4-ix]
 
 	#             0         6
 	#	┌────────┐→x
@@ -249,12 +250,12 @@ class Board:
 	#   └────────┘  
 	#   ↓y
 	func xyToUrIxMask(x, y) -> Array:	# return [ix, mask, nbit]
-		var ix = x + y - 10 + DIAGONAL_CENTER_IX
-		if ix < 0 || ix > 12: return [-1, 0]
-		if ix <= DIAGONAL_CENTER_IX:
-			return [ix, 1<<(g.N_HORZ-1-x+(ix-DIAGONAL_CENTER_IX)), DIAGONAL_CENTER_IX-1+ix]
+		var ix = x + y - 10 + CDX
+		if ix < 0 || ix >= N_DIAGONAL: return [-1, 0]
+		if ix <= CDX:
+			return [ix, 1<<(g.N_HORZ-1-x+(ix-CDX)), 5+ix]
 		else:
-			return [ix, 1<<(y-(ix-DIAGONAL_CENTER_IX)), 17-ix]
+			return [ix, 1<<(y-(ix-CDX)), N_DIAGONAL+4-ix]
 	func is_empty(x, y):	# h_black, h_white のみを参照
 		var mask = 1 << (N_HORZ - 1 - x)
 		return h_black[y]&mask == 0 && h_white[y]&mask == 0
@@ -982,24 +983,26 @@ class Board:
 	func unit_test():
 		assert( prio_pos.size() == N_HORZ * N_VERT )
 		#
-		assert(xyToDrIxMask(0, 0) == [6, 0b10000000000, 11])
-		assert(xyToDrIxMask(10, 10) == [6, 0b1, 11])
-		assert(xyToDrIxMask(0, 1) == [5, 0b01000000000, 10])
-		assert(xyToDrIxMask(9, 10) == [5, 0b1, 10])
-		assert(xyToDrIxMask(0, 2) == [4, 0b00100000000, 9])
-		assert(xyToDrIxMask(8, 10) == [4, 0b1, 9])
-		assert(xyToDrIxMask(1, 0) == [7, 0b01000000000, 10])
-		assert(xyToDrIxMask(10, 9) == [7, 0b1, 10])
+		var r = xyToDrIxMask(0, 0)
+		assert(xyToDrIxMask(0, 0) == [CDX, 1<<(N_HORZ-1), N_HORZ])
+		assert(xyToDrIxMask(N_HORZ-1, N_VERT-1) == [CDX, 0b1, N_HORZ])
+		assert(xyToDrIxMask(0, 1) == [CDX-1, 1<<(N_HORZ-2), N_HORZ-1])
+		assert(xyToDrIxMask(N_HORZ-2, N_VERT-1) == [CDX-1, 0b1, N_HORZ-1])
+		assert(xyToDrIxMask(0, 2) == [CDX-2, 1<<(N_HORZ-3), N_HORZ-2])
+		assert(xyToDrIxMask(N_HORZ-3, N_VERT-1) == [CDX-2, 0b1, N_HORZ-2])
+		r = xyToDrIxMask(1, 0)
+		assert(xyToDrIxMask(1, 0) == [CDX+1, 1<<(N_HORZ-2), N_HORZ-1])
+		assert(xyToDrIxMask(N_HORZ-1, N_VERT-2) == [CDX+1, 0b1, N_HORZ-1])
 		#
-		assert(xyToUrIxMask(10, 0) == [6, 0b1, 11])
-		assert(xyToUrIxMask(0, 10) == [6, 0b10000000000, 11])
-		assert(xyToUrIxMask(9, 0) == [5, 0b1, 10])
-		assert(xyToUrIxMask(0, 9) == [5, 0b01000000000, 10])
-		assert(xyToUrIxMask(8, 0) == [4, 0b1, 9])
-		assert(xyToUrIxMask(0, 8) == [4, 0b00100000000, 9])
-		assert(xyToUrIxMask(10, 1) == [7, 0b1, 10])
-		assert(xyToUrIxMask(1, 10) == [7, 0b01000000000, 10])
-		assert(xyToUrIxMask(10, 2) == [8, 0b1, 9])
+		assert(xyToUrIxMask(N_HORZ-1, 0) == [6, 0b1, 11])
+		assert(xyToUrIxMask(0, N_HORZ-1) == [6, 1<<(N_HORZ-1), N_HORZ])
+		assert(xyToUrIxMask(N_HORZ-2, 0) == [5, 0b1, N_HORZ-1])
+		assert(xyToUrIxMask(0, N_HORZ-2) == [5, 1<<(N_HORZ-2), N_HORZ-1])
+		assert(xyToUrIxMask(N_HORZ-3, 0) == [4, 0b1, N_HORZ-2])
+		assert(xyToUrIxMask(0, N_HORZ-3) == [4, 1<<(N_HORZ-3), N_HORZ-2])
+		assert(xyToUrIxMask(N_HORZ-1, 1) == [7, 0b1, N_HORZ-1])
+		assert(xyToUrIxMask(1, N_HORZ-1) == [7, 1<<(N_HORZ-2), N_HORZ-1])
+		assert(xyToUrIxMask(N_HORZ-1, 2) == [8, 0b1, N_HORZ-2])
 		#
 		var rv = eval_bitmap_34(0b0011100, 0, 7)
 		assert( rv[IX_B3] == 1 )
