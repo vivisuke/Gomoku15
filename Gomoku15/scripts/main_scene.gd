@@ -51,7 +51,7 @@ var beta
 var best_pos
 var start_msec = 0
 var print_count = 0
-var to_confirm = true
+var to_confirm = false
 var saved_data = {}			# 自動保存データ
 
 const AutoSaveFileName	= "user://Gomoku_autosave.dat"		# 自動保存ファイル
@@ -982,3 +982,13 @@ func _on_confirm_button_toggled(button_pressed):
 	$Board/SearchCursor.position = Vector2(-10, -10)*CELL_WD
 	cur_pos = Vector2i(-1, -1)
 	pass # Replace with function body.
+
+
+#func _on_start_stop_button_toggled(button_pressed):
+#	print("_on_start_stop_button_toggled")
+#	pass # Replace with function body.
+
+
+#func _on_init_button_pressed():
+#	print("_on_init_button_pressed")
+#	pass # Replace with function body.

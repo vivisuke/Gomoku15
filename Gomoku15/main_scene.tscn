@@ -94,6 +94,7 @@ offset_left = 185.0
 offset_top = 66.0
 offset_right = 335.0
 offset_bottom = 106.0
+toggle_mode = true
 text = "Start Game"
 icon = ExtResource("8_ohweq")
 
@@ -377,4 +378,6 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "rule"
 horizontal_alignment = 1
 
+[connection signal="pressed" from="InitButton" to="." method="_on_init_button_pressed"]
+[connection signal="toggled" from="StartStopButton" to="." method="_on_start_stop_button_toggled"]
 [connection signal="pressed" from="HBC/RuleButton" to="." method="_on_rule_button_pressed"]
