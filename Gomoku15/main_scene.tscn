@@ -380,4 +380,12 @@ horizontal_alignment = 1
 
 [connection signal="pressed" from="InitButton" to="." method="_on_init_button_pressed"]
 [connection signal="toggled" from="StartStopButton" to="." method="_on_start_stop_button_toggled"]
+[connection signal="item_selected" from="BlackPlayer/OptionButton" to="." method="_on_black_player_selected"]
+[connection signal="item_selected" from="WhitePlayer/OptionButton" to="." method="_on_white_player_selected"]
+[connection signal="toggled" from="ConfirmButton" to="." method="_on_confirm_button_toggled"]
+[connection signal="pressed" from="PlaceButton" to="." method="_on_place_button_pressed"]
+[connection signal="pressed" from="HBC/FirstButton" to="." method="_on_first_button_pressed"]
+[connection signal="pressed" from="HBC/BackButton" to="." method="_on_back_button_pressed"]
+[connection signal="pressed" from="HBC/ForwardButton" to="." method="_on_forward_button_pressed"]
+[connection signal="pressed" from="HBC/LastButton" to="." method="_on_last_button_pressed"]
 [connection signal="pressed" from="HBC/RuleButton" to="." method="_on_rule_button_pressed"]

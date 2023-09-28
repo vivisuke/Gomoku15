@@ -976,6 +976,7 @@ func _on_last_button_pressed():
 		next_color = (g.BLACK + g.WHITE) - next_color
 	update_view()
 func _on_confirm_button_toggled(button_pressed):
+	print("_on_confirm_button_toggled")
 	to_confirm = button_pressed
 	auto_save()
 	$PlaceButton.disabled = !to_confirm
