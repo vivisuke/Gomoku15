@@ -204,6 +204,18 @@ offset_bottom = 703.0
 color = Color(0.87451, 0.764706, 0.376471, 1)
 script = ExtResource("2_7ojb1")
 
+[node name="PutCursor" type="ColorRect" parent="Board"]
+layout_mode = 0
+offset_right = 31.0
+offset_bottom = 31.0
+color = Color(0.501961, 0.752941, 0.501961, 1)
+
+[node name="SearchCursor" type="ColorRect" parent="Board"]
+layout_mode = 0
+offset_right = 31.0
+offset_bottom = 31.0
+color = Color(1, 0.501961, 0.501961, 1)
+
 [node name="Grid" type="ColorRect" parent="Board"]
 layout_mode = 0
 offset_right = 40.0
