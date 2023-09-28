@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://bd7il1mdi2odp"]
+[gd_scene load_steps=37 format=3 uid="uid://bd7il1mdi2odp"]
 
 [ext_resource type="Script" path="res://scripts/TitleBar.gd" id="1_1clxt"]
 [ext_resource type="Script" path="res://scripts/main_scene.gd" id="1_g3bxf"]
@@ -31,6 +31,7 @@
 [ext_resource type="Texture2D" uid="uid://cr7rul86x0yb0" path="res://images/rule_black.png" id="28_us5ki"]
 [ext_resource type="Texture2D" uid="uid://dgaudu65i1khv" path="res://images/rule_white.png" id="29_ka3de"]
 [ext_resource type="Texture2D" uid="uid://cdjwxxdnle2wc" path="res://images/rule_gray.png" id="30_naweb"]
+[ext_resource type="Script" path="res://scripts/FakeConfettiParticles.gd" id="32_52ljn"]
 
 [sub_resource type="TileSet" id="TileSet_keabm"]
 tile_size = Vector2i(31, 31)
@@ -378,12 +379,16 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "rule"
 horizontal_alignment = 1
 
+[node name="FakeConfettiParticles" type="Node2D" parent="."]
+script = ExtResource("32_52ljn")
+
 [connection signal="pressed" from="InitButton" to="." method="_on_init_button_pressed"]
 [connection signal="toggled" from="StartStopButton" to="." method="_on_start_stop_button_toggled"]
 [connection signal="item_selected" from="BlackPlayer/OptionButton" to="." method="_on_black_player_selected"]
 [connection signal="item_selected" from="WhitePlayer/OptionButton" to="." method="_on_white_player_selected"]
 [connection signal="toggled" from="ConfirmButton" to="." method="_on_confirm_button_toggled"]
 [connection signal="pressed" from="PlaceButton" to="." method="_on_place_button_pressed"]
+[connection signal="pressed" from="HBC/UndoButton" to="." method="_on_undo_button_pressed"]
 [connection signal="pressed" from="HBC/FirstButton" to="." method="_on_first_button_pressed"]
 [connection signal="pressed" from="HBC/BackButton" to="." method="_on_back_button_pressed"]
 [connection signal="pressed" from="HBC/ForwardButton" to="." method="_on_forward_button_pressed"]
