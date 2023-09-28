@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://bd7il1mdi2odp"]
+[gd_scene load_steps=36 format=3 uid="uid://bd7il1mdi2odp"]
 
 [ext_resource type="Script" path="res://scripts/TitleBar.gd" id="1_1clxt"]
 [ext_resource type="Script" path="res://scripts/main_scene.gd" id="1_g3bxf"]
@@ -31,6 +31,9 @@
 [ext_resource type="Texture2D" uid="uid://cr7rul86x0yb0" path="res://images/rule_black.png" id="28_us5ki"]
 [ext_resource type="Texture2D" uid="uid://dgaudu65i1khv" path="res://images/rule_white.png" id="29_ka3de"]
 [ext_resource type="Texture2D" uid="uid://cdjwxxdnle2wc" path="res://images/rule_gray.png" id="30_naweb"]
+
+[sub_resource type="TileSet" id="TileSet_keabm"]
+tile_size = Vector2i(31, 31)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_m1i2o"]
 texture = ExtResource("4_x3uc8")
@@ -203,6 +206,11 @@ offset_right = 490.0
 offset_bottom = 703.0
 color = Color(0.87451, 0.764706, 0.376471, 1)
 script = ExtResource("2_7ojb1")
+
+[node name="BGTileMap" type="TileMap" parent="Board"]
+tile_set = SubResource("TileSet_keabm")
+format = 2
+layer_0/tile_data = PackedInt32Array(0, 1, 0, 917518, 1, 0, 131073, 1, 0, 1, 0, 0, 851981, 0, 0, 917504, 0, 0, 14, 0, 0)
 
 [node name="PutCursor" type="ColorRect" parent="Board"]
 layout_mode = 0
