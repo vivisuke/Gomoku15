@@ -364,7 +364,6 @@ texture = ExtResource("16_etdwx")
 
 [node name="RuleButton" type="TextureButton" parent="HBC"]
 layout_mode = 2
-disabled = true
 texture_normal = ExtResource("28_us5ki")
 texture_pressed = ExtResource("29_ka3de")
 texture_disabled = ExtResource("30_naweb")
@@ -377,3 +376,5 @@ offset_bottom = 74.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "rule"
 horizontal_alignment = 1
+
+[connection signal="pressed" from="HBC/RuleButton" to="." method="_on_rule_button_pressed"]

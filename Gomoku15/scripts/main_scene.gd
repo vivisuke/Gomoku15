@@ -97,7 +97,7 @@ func init_labels():
 			var lbl = Label.new()
 			lbl.text = ""
 			#lbl.text = "%d" % (x+y)
-			lbl.position = Vector2(x*CELL_WD, y*CELL_WD+10)
+			lbl.position = Vector2(x*CELL_WD, y*CELL_WD+3)
 			lbl.size.x = CELL_WD-10
 			lbl.horizontal_alignment = HORIZONTAL_ALIGNMENT_RIGHT
 			lbl.modulate = Color.RED		#(1, 0, 0) # 赤色
@@ -877,8 +877,8 @@ func print_eval():
 func print_eval_tbl():
 	print("print_eval_tbl():")
 	for i in range(bd.prio_pos.size()):
-		var x = bd.prio_pos[i][0]
-		var y = bd.prio_pos[i][1]
+		var x = bd.prio_pos[i].x
+		var y = bd.prio_pos[i].y
 		var ix = y * N_HORZ + x
 		if bd.is_empty(x, y):
 			bd.put_color(x, y, next_color)
@@ -895,8 +895,8 @@ func print_eval_tbl():
 func build_put_order():
 	put_order = []
 	for i in range(bd.prio_pos.size()):
-		var x = bd.prio_pos[i][0]
-		var y = bd.prio_pos[i][1]
+		var x = bd.prio_pos[i].x
+		var y = bd.prio_pos[i].y
 		var ix = y * N_HORZ + x
 		if bd.is_empty(x, y):
 			bd.put_color(x, y, next_color)

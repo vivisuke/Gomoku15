@@ -1111,6 +1111,8 @@ func _ready():
 	build_prio_pos()
 	#print("prio_pos.size() = ", prio_pos.size())
 	#print("prio_pos = ", prio_pos)
+	for i in range(25):
+		print(prio_pos[i])
 	pass # Replace with function body.
 
 func _process(delta):
@@ -1122,7 +1124,7 @@ func build_prio_pos():
 		prio_pos.push_back(Vector2i(CX, CY+i))		# 下辺中央
 		prio_pos.push_back(Vector2i(CX-i, CY))		# 左辺中央
 		prio_pos.push_back(Vector2i(CX+i, CY))		# 右辺中央
-		for k in range(i-1):
+		for k in range(1, i):
 			prio_pos.push_back(Vector2i(CX-k, CY-i))		# 上辺
 			prio_pos.push_back(Vector2i(CX+k, CY-i))		# 上辺
 			prio_pos.push_back(Vector2i(CX-k, CY+i))		# 下辺
