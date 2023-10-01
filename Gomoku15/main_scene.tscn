@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=3 uid="uid://bd7il1mdi2odp"]
+[gd_scene load_steps=39 format=3 uid="uid://bd7il1mdi2odp"]
 
 [ext_resource type="Script" path="res://scripts/TitleBar.gd" id="1_1clxt"]
 [ext_resource type="Script" path="res://scripts/main_scene.gd" id="1_g3bxf"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://ccn0u3svlt0m6" path="res://images/white_31.png" id="5_0fuu7"]
 [ext_resource type="Texture2D" uid="uid://bmkivh14ecwf1" path="res://images/autorenew_white_32.png" id="7_5hxt1"]
 [ext_resource type="Texture2D" uid="uid://buv5opysoy8ff" path="res://images/play_arrow_white_32.png" id="8_ohweq"]
+[ext_resource type="Texture2D" uid="uid://7wpvr31dlvef" path="res://images/gray_31.png" id="9_k3whe"]
 [ext_resource type="Texture2D" uid="uid://bt67q3bcmc8ab" path="res://images/stop_white_32.png" id="9_l4qj8"]
 [ext_resource type="Texture2D" uid="uid://c2suld26k1ali" path="res://images/black_42.png" id="10_8sw0x"]
 [ext_resource type="Texture2D" uid="uid://27onerr514r4" path="res://images/white_42.png" id="11_28udq"]
@@ -33,8 +34,14 @@
 [ext_resource type="Texture2D" uid="uid://cdjwxxdnle2wc" path="res://images/rule_gray.png" id="30_naweb"]
 [ext_resource type="Script" path="res://scripts/FakeConfettiParticles.gd" id="32_52ljn"]
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_q5wih"]
+texture = ExtResource("9_k3whe")
+texture_region_size = Vector2i(31, 31)
+0:0/0 = 0
+
 [sub_resource type="TileSet" id="TileSet_keabm"]
 tile_size = Vector2i(31, 31)
+sources/0 = SubResource("TileSetAtlasSource_q5wih")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_m1i2o"]
 texture = ExtResource("4_x3uc8")
@@ -212,7 +219,7 @@ script = ExtResource("2_7ojb1")
 [node name="BGTileMap" type="TileMap" parent="Board"]
 tile_set = SubResource("TileSet_keabm")
 format = 2
-layer_0/tile_data = PackedInt32Array(0, 1, 0, 917518, 1, 0, 131073, 1, 0, 1, 0, 0, 851981, 0, 0, 917504, 0, 0, 14, 0, 0)
+layer_0/tile_data = PackedInt32Array(0, 1, 0, 917518, 1, 0, 131073, 1, 0, 1, 0, 0, 851981, 0, 0, 917504, 0, 0, 14, 0, 0, 7, 0, 0)
 
 [node name="PutCursor" type="ColorRect" parent="Board"]
 layout_mode = 0

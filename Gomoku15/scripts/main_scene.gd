@@ -138,6 +138,7 @@ func update_view():
 	$HBC/BackButton.disabled = move_ix < 0 || game_started
 	$HBC/ForwardButton.disabled = move_hist.size() - 1 <= move_ix || game_started
 	$HBC/LastButton.disabled = move_hist.size() - 1 <= move_ix || game_started
+	# 禁じ手箇所強調
 	for y in range(N_VERT):
 		for x in range(N_HORZ):
 			var id = -1
