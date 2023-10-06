@@ -86,7 +86,7 @@ offset_left = 328.0
 offset_top = 19.0
 offset_right = 398.0
 offset_bottom = 45.0
-text = "ver 0.001"
+text = "ver 0.002"
 
 [node name="InitButton" type="Button" parent="."]
 offset_left = 10.0
